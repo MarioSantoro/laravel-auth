@@ -6,3 +6,31 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    background-color: #0D1117;
+}
+
+div.guests {
+    nav.navbar-guests {
+        background-color: black;
+        padding: 8px 0;
+
+        a.guest {
+            font-size: 1.125rem;
+            color: white;
+        }
+    }
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-left: 16px;
+    transition: all .4s;
+}
+
+a:hover {
+    color: gray;
+}
