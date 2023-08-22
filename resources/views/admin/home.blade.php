@@ -4,6 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <div class="button">
+                    <a href="{{ route('admin.create') }}" class="btn btn-primary mb-3">Create a new Project</a>
+                </div>
                 <div class="card">
                     <div class="card-header">Amministratore</div>
 

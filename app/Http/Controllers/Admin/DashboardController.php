@@ -24,7 +24,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -32,7 +32,20 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'title' => ['required', 'min:3', 'unique:projects'],
+                'type' => ['required', 'min:3'],
+                'status' => ['required', 'min:3'],
+                'start_date' => ['required', 'date_format:Y-m-d'],
+                'end_date' => ['required', 'date_format:Y-m-d'],
+                'image' => ['required', 'url:https']
+            ],
+        );
+        $project = Project::create($data);
+
+
+        return redirect()->route('admin.dashboard');
     }
 
     /**
