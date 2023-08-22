@@ -23,6 +23,17 @@ div.guests {
     }
 }
 
+div.show {
+    div.card {
+        width: 40%;
+    }
+
+    img {
+        width: 100%;
+        height: 300px;
+    }
+}
+
 nav a {
     color: white;
     text-decoration: none;

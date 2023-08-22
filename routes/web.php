@@ -25,4 +25,6 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])
             ->name('dashboard');
+        Route::get('/project{id}', [DashboardController::class, 'show'])
+            ->name('show');
     });
