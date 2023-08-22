@@ -19,7 +19,7 @@
                         @endif
                     @endauth
                     <a href="#">About</a>
-                    <a href="#">Contact Me</a>
+                    <a href="#">Project</a>
                 </div>
             @endif
         </div>

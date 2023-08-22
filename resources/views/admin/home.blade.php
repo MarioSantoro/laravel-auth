@@ -8,28 +8,33 @@
                     <div class="card-header">Amministratore</div>
 
                     <div class="card-body">
-                        <h1>Bentornato {{ $admin->name }}</h1>
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
                         <table class="table table-dark">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Password</th>
+                                    <th scope="col">title</th>
+                                    <th scope="col">type</th>
+                                    <th scope="col">status</th>
+                                    <th scope="col">Start_Date</th>
+                                    <th scope="col">End_Date</th>
+                                    <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($allUsers as $user)
+                                @foreach ($projects as $project)
                                     <tr>
-                                        <th scope="row">{{ $user->id }}</th>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>..........</td>
+                                        <th scope="row">{{ $project->id }}</th>
+                                        <td>{{ $project->title }}</td>
+                                        <td>{{ $project->type }}</td>
+                                        <td>{{ $project->status }}</td>
+                                        <td>{{ $project->start_date }}</td>
+                                        <td>{{ $project->end_date }}</td>
+                                        <td class="d-flex justify-content-between">
+                                            <a href="" class="btn btn-sm btn-primary">View</a>
+                                            <a href="" class="btn btn-sm btn-success">Edit</a>
+                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

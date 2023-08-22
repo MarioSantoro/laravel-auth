@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,9 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $admin = Auth::user();
-        $allUsers = User::all();
-        return view('admin.home', compact('admin', 'allUsers'));
+        $projects = Project::all();
+        return view('admin.home', compact('projects'));
     }
 
     /**
