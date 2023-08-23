@@ -59,17 +59,30 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->validate(
+            [
+                'title' => ['required', 'min:3', 'unique:projects'],
+                'type' => ['required', 'min:3'],
+                'status' => ['required', 'min:3'],
+                'start_date' => ['required', 'date_format:Y-m-d'],
+                'end_date' => ['required', 'date_format:Y-m-d'],
+                'image' => ['required', 'url:https']
+            ],
+        );
+        $project->update($data);
+
+
+        return redirect()->route('admin.dashboard');
     }
 
     /**
