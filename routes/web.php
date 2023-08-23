@@ -33,6 +33,8 @@ Route::middleware(['auth', 'verified'])
             ->name('store');
         Route::put('/update/{project}', [DashboardController::class, 'update'])
             ->name('update');
+        Route::delete('/restore/{project}', [DashboardController::class, 'restore'])
+            ->name('restore');
         Route::delete('/{project}', [DashboardController::class, 'destroy'])
             ->name('destroy');
         Route::get('/project/{project}', [DashboardController::class, 'show'])

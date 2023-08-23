@@ -30,9 +30,13 @@
                                         <td>{{ $project->start_date }}</td>
                                         <td>{{ $project->end_date }}</td>
                                         <td class="d-flex justify-content-evenly">
-                                            <a href="{{ route('admin.show', $project) }}"
-                                                class="btn btn-sm btn-warning">Restore</a>
-                                            <form action="{{ }}" method="POST" class="d-inline-block">
+                                            <form action="{{ route('admin.restore', $project->id) }}" method="POST"
+                                                class="d-inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-warning">Restore</button>
+                                            </form>
+                                            <form action="#" method="POST" class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">Permanent

@@ -99,4 +99,11 @@ class DashboardController extends Controller
         $projects = Project::onlyTrashed()->get();
         return view('admin.trashed', compact('projects'));
     }
+
+    public function restore(string $id)
+    {
+        $project = Project::withTrashed()->findOrFail($id);
+        $project->restore();
+        return redirect()->route('admin.dashboard');
+    }
 }
