@@ -33,7 +33,7 @@
                                         <td>{{ $project->start_date }}</td>
                                         <td>{{ $project->end_date }}</td>
                                         <td class="d-flex justify-content-between">
-                                            <a href="{{ route('admin.show', $project->id) }}"
+                                            <a href="{{ route('admin.show', $project) }}"
                                                 class="btn btn-sm btn-primary">View</a>
                                             <a href="" class="btn btn-sm btn-success">Edit</a>
                                             <a href="" class="btn btn-sm btn-danger">Delete</a>

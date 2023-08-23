@@ -12,4 +12,9 @@ class Project extends Model
     protected $fillable = [
         'title', 'type', 'start_date', 'end_date', 'status', 'image'
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'title';
+    }
 }

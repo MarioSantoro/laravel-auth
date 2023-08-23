@@ -25,10 +25,10 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])
             ->name('dashboard');
-        Route::get('/project{id}', [DashboardController::class, 'show'])
-            ->name('show');
         Route::get('/create', [DashboardController::class, 'create'])
             ->name('create');
         Route::post('/', [DashboardController::class, 'store'])
             ->name('store');
+        Route::get('/project/{project}', [DashboardController::class, 'show'])
+            ->name('show');
     });
