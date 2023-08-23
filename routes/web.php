@@ -25,13 +25,15 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])
             ->name('dashboard');
+        Route::get('/bin', [DashboardController::class, 'trashed'])
+            ->name('trashed');
         Route::get('/create', [DashboardController::class, 'create'])
             ->name('create');
         Route::post('/', [DashboardController::class, 'store'])
             ->name('store');
         Route::put('/update/{project}', [DashboardController::class, 'update'])
             ->name('update');
-        Route::delete('/delete/{project}', [DashboardController::class, 'destroy'])
+        Route::delete('/{project}', [DashboardController::class, 'destroy'])
             ->name('destroy');
         Route::get('/project/{project}', [DashboardController::class, 'show'])
             ->name('show');

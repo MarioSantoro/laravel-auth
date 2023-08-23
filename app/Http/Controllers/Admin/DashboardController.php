@@ -90,5 +90,13 @@ class DashboardController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->delete();
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function trashed()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.trashed', compact('projects'));
     }
 }
