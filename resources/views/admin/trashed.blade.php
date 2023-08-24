@@ -36,7 +36,8 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-warning">Restore</button>
                                             </form>
-                                            <form action="#" method="POST" class="d-inline-block">
+                                            <form action="{{ route('admin.forceDelete', $project->id) }}" method="POST"
+                                                class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">Permanent

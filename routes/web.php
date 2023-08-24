@@ -31,12 +31,14 @@ Route::middleware(['auth', 'verified'])
             ->name('create');
         Route::post('/', [DashboardController::class, 'store'])
             ->name('store');
+        Route::delete('/deleted/{project}', [DashboardController::class, 'destroy'])
+            ->name('destroy');
         Route::put('/update/{project}', [DashboardController::class, 'update'])
             ->name('update');
         Route::delete('/restore/{project}', [DashboardController::class, 'restore'])
             ->name('restore');
-        Route::delete('/{project}', [DashboardController::class, 'destroy'])
-            ->name('destroy');
+        Route::delete('/{project}', [DashboardController::class, 'forceDelete'])
+            ->name('forceDelete');
         Route::get('/project/{project}', [DashboardController::class, 'show'])
             ->name('show');
         Route::get('/project/{project}/edit', [DashboardController::class, 'edit'])

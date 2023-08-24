@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -39,9 +40,13 @@ class DashboardController extends Controller
                 'status' => ['required', 'min:3'],
                 'start_date' => ['required', 'date_format:Y-m-d'],
                 'end_date' => ['required', 'date_format:Y-m-d'],
-                'image' => ['required', 'url:https']
+                'image' => ['required', 'image']
             ],
         );
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('uploads', $request['image']);
+            $data['image'] = $img_path;
+        }
         $project = Project::create($data);
 
 
@@ -104,6 +109,14 @@ class DashboardController extends Controller
     {
         $project = Project::withTrashed()->findOrFail($id);
         $project->restore();
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function forceDelete(string $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+        Storage::delete($project->image);
+        $project->forceDelete();
         return redirect()->route('admin.dashboard');
     }
 }

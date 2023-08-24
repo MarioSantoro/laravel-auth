@@ -9,7 +9,7 @@
                 @endforeach
             </ul>
         @endif
-        <form class="col-8 m-auto text-white" action="{{ route('admin.store') }}" method="POST">
+        <form class="col-8 m-auto text-white" action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group m-2">
                 <label for="shoreName">Title</label>
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group m-2">
                 <label for="shoreBeds">Image</label>
-                <input type="text" class="form-control" id="shoreBeds" name="image"
+                <input type="file" class="form-control" id="shoreBeds" name="image"
                     placeholder="Enter the numbre of your beach beds" value="{{ old('image') }}">
             </div>
             <div class="form-group m-2">
