@@ -1,6 +1,5 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
 // Variables
 @import 'variables';
 
@@ -8,17 +7,19 @@
 @import 'bootstrap/scss/bootstrap';
 
 body {
-    background-color: #0D1117;
+    background-color: #241944;
+    font-family: 'Sora', sans-serif;
 }
 
 div.guests {
     nav.navbar-guests {
-        background-color: black;
+        background-color: transparent;
         padding: 8px 0;
 
         a.guest {
             font-size: 1.125rem;
             color: white;
+            margin-left: 0;
         }
     }
 }
@@ -34,14 +35,48 @@ div.show {
     }
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-left: 16px;
-    transition: all .4s;
+nav {
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+
+    a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        margin-left: 4rem;
+        transition: all .4s;
+        font-weight: 700;
+    }
 }
+
+
 
 a:hover {
     color: gray;
+}
+
+/* Header */
+.large-header {
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: -2;
+    position: relative;
+    top: 0;
+}
+
+.wrapper {
+    height: 44.8px;
+}
+
+.main-title {
+    position: absolute;
+    top: 30%;
+    left: 16%;
+
+    h1 {
+        font-size: 3rem;
+    }
 }
