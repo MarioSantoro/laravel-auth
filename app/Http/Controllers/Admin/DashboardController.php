@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class DashboardController extends Controller
 {
@@ -76,14 +77,18 @@ class DashboardController extends Controller
     {
         $data = $request->validate(
             [
-                'title' => ['required', 'min:3', 'unique:projects'],
+                'title' => ['required', 'min:3',  Rule::unique('projects')->ignore($project->id),],
                 'type' => ['required', 'min:3'],
                 'status' => ['required', 'min:3'],
                 'start_date' => ['required', 'date_format:Y-m-d'],
                 'end_date' => ['required', 'date_format:Y-m-d'],
-                'image' => ['required', 'url:https']
+                'image' => ['required', 'image']
             ],
         );
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('uploads', $request['image']);
+            $data['image'] = $img_path;
+        }
         $project->update($data);
 
 
